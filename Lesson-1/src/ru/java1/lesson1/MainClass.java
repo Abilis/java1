@@ -51,6 +51,16 @@ public class MainClass {
 
         }
         System.out.println("Ну воооот, а так хорошо общались");
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            System.out.println("Не получилось :(");
+        }
+
+        if (System.out.printf("А в команде вывода этой строки не успользовалось \";\"") != null) {
+
+        }
     }
 
 }
