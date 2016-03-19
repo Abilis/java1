@@ -3,10 +3,6 @@ package ru.java1.lesson1;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
-
-import static javafx.scene.input.KeyCode.T;
 
 /**
  * Created by Abilis on 17.03.2016.
@@ -18,6 +14,7 @@ public class MainClass {
 
     public static void main(String[] args) {
 
+        System.out.println(num);
         str = "Hello!";
         System.out.println(str);
         System.out.println("Строка выше была инициализирована чуть позже");
