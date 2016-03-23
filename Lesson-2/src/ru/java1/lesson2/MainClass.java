@@ -95,8 +95,10 @@ public class MainClass {
         }
 
         //Посмотрим, что получилось
-        System.out.println("Среднее значение первого массива после обработки: " + (double) firstSumAfterProcessing / firstArr.length);
-        System.out.println("Среднее значение второго массива после обработки: " + (double) secondSumAfterProcessing / (secondArr.length *secondArr.length ));
+        System.out.println("Среднее значение первого массива после обработки: " +
+                (double) firstSumAfterProcessing / firstArr.length);
+        System.out.println("Среднее значение второго массива после обработки: " +
+                (double) secondSumAfterProcessing / (secondArr.length * secondArr.length ));
 
 
 
@@ -280,18 +282,47 @@ public class MainClass {
         } //конец цикла второго калькулятора
 
 
+        //определение четности/нечетности числа/символа
+        System.out.println("Введите число или символ и программа скажет, четное оно или нечетное");
 
-        int num = 15;
+        String sNum = "";
+        int num = 0;
+        char sym = 'a';
 
-        if (isChet(num)) {
-            System.out.println(num + " - четное число");
+        try {
+            sNum = reader.readLine();
+            num = Integer.parseInt(sNum);
+
+            if (isChet(num)) {
+                System.out.println(num + " - четное число");
+            }
+            else {
+                System.out.println(num + " - нечетное число");
+            }
+
+        } catch (Exception e) {
+            if (sNum.length() == 1) {
+                sym = sNum.charAt(0);
+
+                if (isCHet(sym)) {
+                    System.out.println(sym + " имеет четное представление в байте");
+                }
+                else {
+                    System.out.println(sym + " имеет нечетное представление в байте");
+                }
+
+            }
+            else {
+                System.out.println("Нельзя определить четность/нечетность для того, что вы ввели");
+            }
+
         }
-        else {
-            System.out.println(num + " - нечетное число");
-        }
 
 
-        //и еще надо написать метод, который будет оптимален для определения четности числа, любого целого примитивного типа в том числе char
+
+
+        //и еще надо написать метод, который будет оптимален для определения четности числа,
+        // любого целого примитивного типа в том числе char
 
 
 
@@ -303,7 +334,7 @@ public class MainClass {
 
       } //конец метода мейн
 
-       private static boolean isChet(int num) {
+   private static boolean isChet(int num) {
 
            if (num % 2 == 0) {
                return true;
@@ -312,4 +343,18 @@ public class MainClass {
                return false;
            }
        }
+
+    private static boolean isCHet (char sym) {
+
+        byte num = (byte) sym;
+
+        if (num % 2 == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
 }
