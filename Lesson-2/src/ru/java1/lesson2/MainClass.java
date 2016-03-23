@@ -281,6 +281,19 @@ public class MainClass {
 
 
 
+        int num = 15;
+
+        if (isChet(num)) {
+            System.out.println(num + " - четное число");
+        }
+        else {
+            System.out.println(num + " - нечетное число");
+        }
+
+
+        //и еще надо написать метод, который будет оптимален для определения четности числа, любого целого примитивного типа в том числе char
+
+
 
         try {
             reader.close();
@@ -290,5 +303,13 @@ public class MainClass {
 
       } //конец метода мейн
 
+       private static boolean isChet(int num) {
 
+           if (num % 2 == 0) {
+               return true;
+           }
+            else {
+               return false;
+           }
+       }
 }
