@@ -14,12 +14,17 @@ public class MainClass {
         ipAddress += 168; //добавляем в исходный интеджер 168 ( 10 101 000)
         ipAddress = ipAddress << 8; //сдвигаем биты еще на 8 разрядов влево
 
-        ipAddress += 10; //добавляем в исходный интеджер 100 (01 100 100)
+        ipAddress += 100; //добавляем в исходный интеджер 100 (01 100 100)
         ipAddress = ipAddress << 8; //сдвигаем биты еще на 8 разрядов влево
-        ipAddress += 111; //добавляем в исходный интеджер еще 10 (00 001 010)
+        ipAddress += 10; //добавляем в исходный интеджер еще 10 (00 001 010)
 
         System.out.println(ipAddress + " - так записан 192.168.100.10, \"упакованный\" в один интеджер"); //что теперь записано в ipAddress
         String ipAddressAsStr = Integer.toBinaryString(ipAddress); //в двоичном виде
+
+        //если длина получившейся строки меньше 32, то заполняем начало нулями, чтобы не было экспепшена при отображениии
+        while (ipAddressAsStr.length() < 32) {
+            ipAddressAsStr = "0" + ipAddressAsStr;
+        }
 
         String firstOctet = ipAddressAsStr.substring(0, 8);
         String secondOctet = ipAddressAsStr.substring(8, 16);
