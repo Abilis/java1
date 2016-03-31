@@ -70,7 +70,8 @@ public class Cake {
 
     @Override
     public String toString() {
-        return "Кекс " + "\"" + name + "\"" + " массой " + weigth + " грамм приготовлен за " + timeForCook.getMinutes() + " минут";
+        return "Кекс " + "\"" + name + "\"" + " массой " + weigth + " грамм приготовлен за " + timeForCook.getMinutes() + " минут " +
+                timeForCook.getSeconds() + " секунд";
     }
 
     //метод добавляет некоторое количество муки к тому количеству, которое уже есть в кексе. Используется для создания нового кекса на основе уже имеющегося
