@@ -7,14 +7,14 @@ public class GrandFather extends GreatGrandFather {
 
     protected int number = 20;
 
-
+    @Override
     protected int getNumber() {
         return this.number;
     }
 
     @Override
     protected int getParentNumber() {
-        return super.getParentNumber();
+        return super.getNumber();
     }
 
 }
