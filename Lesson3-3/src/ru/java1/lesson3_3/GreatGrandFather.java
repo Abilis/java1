@@ -7,10 +7,6 @@ public abstract class GreatGrandFather {
 
     protected int number = 10;
 
-    protected int getNumber() {
-        return this.number;
-    }
 
-    protected abstract int getParentNumber();
 
 }

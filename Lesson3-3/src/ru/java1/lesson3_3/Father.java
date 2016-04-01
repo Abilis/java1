@@ -7,14 +7,6 @@ public class Father extends GrandFather {
 
     protected int number = 30;
 
-    @Override
-    protected int getNumber() {
-        return this.number;
-    }
 
-    @Override
-    protected int getParentNumber() {
-        return super.getParentNumber();
-    }
 
 }

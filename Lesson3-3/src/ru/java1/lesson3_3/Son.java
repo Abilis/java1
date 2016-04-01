@@ -7,12 +7,10 @@ public class Son extends Father {
 
     protected int number = 40;
 
-    protected int getParentNumber() {
-        return super.getParentNumber();
-    }
+
 
     public int getGreatGrandFatherNumber() {
-        return getParentNumber();
+        return ((GreatGrandFather)this).number;
     }
 
 }
