@@ -5,7 +5,7 @@ package ru.java1.lesson3_4;
  */
 public class Hero extends Unit {
 
-    public Hero(String name) {
-        super(name);
+    public Hero(String name, int x, int y) {
+        super(name, x, y);
     }
 }
