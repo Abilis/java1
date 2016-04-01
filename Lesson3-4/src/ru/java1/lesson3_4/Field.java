@@ -7,6 +7,28 @@ import java.util.ArrayList;
  */
 public class Field {
 
-    private ArrayList<Hexagon> listOfHexs;
+    private int width;
+    private int height;
 
+    private Hexagon[][] field;
+
+    public Hexagon[][] getField() {
+        return field;
+    }
+
+    public Field(int width, int height) {
+        this.width = width;
+        this.height = height;
+
+        //инициализируем поле
+        field = new Hexagon[width][height];
+
+        //заполняем поле гексами
+        for (int i = 0; i < field.length ; i++) {
+            for (int j = 0; j < field[i].length; j++) {
+                field[i][j] = new Hexagon();
+            }
+        }
+
+    }
 }
