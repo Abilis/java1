@@ -60,6 +60,7 @@ public class Collections {
     public static Collection<Integer> getIntersection(Collection<Integer> coll1, Collection<Integer> coll2) {
 
         //пересечение есть множество, состоящее из элементов, которые есть в обеих множествах
+        //Будем использовать свойство HashSet - оно не содерижит повторов.
         Collection<Integer> result = new HashSet<Integer>();
 
         if (coll1 == null || coll2 == null) {
@@ -96,7 +97,6 @@ public class Collections {
     public static Collection<Integer> getUnion(Collection<Integer> coll1, Collection<Integer> coll2) {
 
         //объединение есть множество, состоящее из элементов, которые есть хотя бы в одном множестве
-        //Будем использовать свойство HashSet - оно не содерижит повторов.
         Collection<Integer> result = new HashSet<Integer>();
 
         if (coll1 == null || coll2 == null) {
