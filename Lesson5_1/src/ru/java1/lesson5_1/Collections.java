@@ -1,9 +1,6 @@
 package ru.java1.lesson5_1;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Abilis on 22.04.2016.
@@ -28,8 +25,10 @@ public class Collections {
         }
 
         //Выводим содержимое полученных коллекций на печать
-        System.out.println(coll1);
-        System.out.println(coll2);
+        System.out.println("Первая коллекция:\n" + coll1);
+        System.out.println();
+        System.out.println("Вторая коллекция:\n" + coll2);
+        System.out.println();
 
         //1 задание
         //формируем новую коллекцию, которая будет состоять из пересечение этих двух коллекций
@@ -45,13 +44,14 @@ public class Collections {
 
         //печатаем ее тоже
         System.out.println("Объединение: " + unionColl);
-
+        System.out.println();
 
         //3 задание
         //сортируем 2 коллекцию и печатаем ее
         System.out.println("Отсортированная вторая коллекция:\n" + sort(coll2));
 
-
+        //печатаем вторую коллекцию, чтобы убедиться, что она не была затронута сортировкой
+        System.out.println("Вторая коллекция:\n" + coll2);
 
 
     }
@@ -117,18 +117,18 @@ public class Collections {
             return null;
         }
 
-
-        //Сортировка листа
-        if (coll instanceof List) {
-
-            List collList = new ArrayList<>(coll.size());
-            collList.addAll(coll);
-            return qSort(collList, 0, coll.size() - 1);
-        }
-
-        else {
+        //Мапы не сортируем :(
+        if (coll instanceof Map) {
             return coll;
         }
+
+        //создаем новый лист, в который переносим элементы входной коллекции, чтобы была возможность отсортировать
+        //Hash* и Tree* с каким-нибудь хитрым компаратором
+
+        List collList = new ArrayList<Integer>(coll.size());
+
+        collList.addAll(coll);
+        return qSort(collList, 0, coll.size() - 1);
 
     }
 
