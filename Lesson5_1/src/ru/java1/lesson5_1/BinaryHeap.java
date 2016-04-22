@@ -19,14 +19,20 @@ public class BinaryHeap {
         heapSize = list.size();
         this.list = new ArrayList<>(heapSize);
 
-        //строим кучу написанным ниже методом
-        this.buildHeap(list);
+        //добавляем все элементы полученного списка в кучу
+        this.list.addAll(list);
+
+        //и перестраиваем дерево для каждой вершины
+        for (int i = heapSize / 2; i >= 0; i--) {
+            heapify(i);
+        }
     }
 
     //метод добавляет новый элемент в кучу
     public void add(int value) {
 
         list.add(value);
+        heapSize++;
         int i = heapSize - 1; //индекс только что добавленного элемента
         int parent = (i - 1) / 2; //индекс родителя только что добавленного элемента
 
@@ -85,35 +91,63 @@ public class BinaryHeap {
 
     }
 
-    //построение кучи на основе полученного списка
-    public void buildHeap(List<Integer> list) {
-
-        //добавляем список в "список кучи"
-        this.list.addAll(list);
-
-        //и перестраиваем дерево для каждой вершины
-        for (int i = heapSize / 2; i >= 0; i--) {
-            heapify(i);
-        }
-    }
 
     //взятие максимального элемента. Он всегда хранится на 0 позиции
     public int getMax() {
         return list.get(0);
     }
 
-    //удаление максимального элемента
-    public void removeMax() {
+    //удаление (извлечение) максимального элемента
+    public int removeMax() {
 
-        //меняем местами 0 элемент и последний, затем удаляем последний и применяем упорядочивание для корня всего дерева
-        int temp = list.get(0);
+        //меняем местами 0 элемент и последний
+        int result = list.get(0);
         list.set(0, list.get(heapSize - 1));
-        list.set(heapSize - 1, temp);
+        list.set(heapSize - 1, result);
+
+        //удаляем последний и применяем упорядочивание для корня всего дерева
+        list.remove(heapSize - 1);
+        heapSize--;
 
         heapify(0);
 
+        return result;
     }
 
-    //взятия минимального элемента
+    //сортировка листа с помощью кучи
+    public static void sort(List sourseList) {
 
+        BinaryHeap binaryHeap = new BinaryHeap(sourseList);
+
+        for (int i = sourseList.size() - 1; i >= 0; i--) {
+            sourseList.set(i, binaryHeap.removeMax());
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "BinaryHeap{" +
+                "list=" + list +
+                ", heapSize=" + heapSize +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BinaryHeap that = (BinaryHeap) o;
+
+        if (getHeapSize() != that.getHeapSize()) return false;
+        return list != null ? list.equals(that.list) : that.list == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = list != null ? list.hashCode() : 0;
+        result = 31 * result + getHeapSize();
+        return result;
+    }
 }

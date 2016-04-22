@@ -53,7 +53,77 @@ public class Collections {
         //печатаем вторую коллекцию, чтобы убедиться, что она не была затронута сортировкой
         System.out.println("Вторая коллекция:\n" + coll2);
 
+        System.out.println();
+        System.out.println();
 
+        //посмотрим, как работает сортировка бинарной кучи
+        LinkedList<Integer> sourceList = new LinkedList<>();
+
+        for (int i = 0; i < 10; i++) {
+            sourceList.add(i, (int) (Math.random() * 10 ));
+        }
+
+        System.out.println("Исходный LinkedList: " + sourceList);
+        BinaryHeap.sort(sourceList);
+        System.out.println("Сортированый с помощью кучи: " + sourceList);
+        System.out.println();
+        System.out.println();
+
+        //посмотрим, как работает взятие и извлечение максимального элемента
+        List<Integer> testList = new ArrayList<>();
+        testList.add(10);
+        testList.add(8);
+        testList.add(13);
+        testList.add(1);
+        System.out.println("Исходный лист: " + testList);
+        BinaryHeap heap = new BinaryHeap(testList);
+        System.out.println("Образованная из исходного листа куча: " + heap);
+        System.out.println("Максимальный элемент в куче: " + heap.getMax());
+        System.out.println("Куча не должна измениться: " + heap);
+        System.out.println();
+
+        System.out.println("Извлекаем максимальный элемент из кучи: " + heap.removeMax());
+        System.out.println("Куча должна уменьшиться на 1: " + heap);
+        System.out.println();
+
+        System.out.println("Извлекаем максимальный элемент из кучи: " + heap.removeMax());
+        System.out.println("Куча должна уменьшиться на 1: " + heap);
+        System.out.println();
+
+        System.out.println("Извлекаем максимальный элемент из кучи: " + heap.removeMax());
+        System.out.println("Куча должна уменьшиться на 1: " + heap);
+        System.out.println();
+
+        System.out.println("Извлекаем максимальный элемент из кучи: " + heap.removeMax());
+        System.out.println("Куча должна уменьшиться на 1: " + heap);
+        System.out.println();
+
+        try {
+            System.out.println("Извлекаем максимальный элемент из кучи: " + heap.removeMax());
+            System.out.println("Куча должна уменьшиться на 1: " + heap);
+        } catch (IndexOutOfBoundsException Ignored) {
+            System.out.println("Поймали экшепшн, т.к. извлекать нечего");
+        }
+
+        heap.add(1);
+        System.out.println("Добавляем элемент в кучу: " + heap);
+
+        heap.add(2);
+        System.out.println("Добавляем элемент в кучу: " + heap);
+
+        heap.add(4);
+        System.out.println("Добавляем элемент в кучу: " + heap);
+
+        heap.add(11);
+        System.out.println("Добавляем элемент в кучу: " + heap);
+
+        heap.add(8);
+        System.out.println("Добавляем элемент в кучу: " + heap);
+        System.out.println();
+        System.out.println("Добавление вроде перестраивает кучу верно");
+
+        heap.heapify(0);
+        System.out.println("Принудительно перестроенная куча: " + heap);
     }
 
 
