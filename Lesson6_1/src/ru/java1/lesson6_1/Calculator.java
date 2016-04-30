@@ -12,6 +12,11 @@ public class Calculator {
     private static MainWindow mainWindowFrame;
     private static JLabel funMessageLabel;
     private static String[] funMessages;
+    private static Thread funThread;
+
+    public static Thread getFunThread() {
+        return funThread;
+    }
 
     public static void main(String[] args) {
 
@@ -20,7 +25,7 @@ public class Calculator {
         mainWindowFrame.init();
 
         //чтобы было немного поинтереснее
-        FunThread funThread = new FunThread();
+        funThread = new FunThread();
         funThread.setDaemon(true);
         funThread.start();
 
@@ -37,29 +42,29 @@ public class Calculator {
             }
             funMessages = new String[10];
             funMessages[0] = "А сколько будет 2 + 2 * 2?";
-            funMessages[1] = "Этот калькулятор - демо версия виндовского";
+            funMessages[1] = "Этот калькулятор - демо-версия виндовского";
             funMessages[2] = "Неизвестно, сколько существует Perfect Numbers";
             funMessages[3] = "Давай уже, жми чего-нибудь!";
             funMessages[4] = "1,01 в степени 365 примерно равно 37";
             funMessages[5] = "1 в любой степени равно 1";
-            funMessages[6] = "0,99 в степени 365 примерно равно 0,36";
+            funMessages[6] = "0,99 в степени 365 примерно равно 0,026";
             funMessages[7] = "Хороший дизайн, не правда ли?";
             funMessages[8] = "Слова ничего не значат, покажите код! (Линус Торвальд)";
             funMessages[9] = "TCP vs UDP. На чьей стороне ты?";
 
-            while (!Thread.interrupted()) {
+            while (true) {
 
                 try {
                     Thread.sleep(2500);
-                } catch (InterruptedException Ignored) {
-
+                    int index = (int) (java.lang.Math.random() * funMessages.length);
+                    funMessageLabel.setText(funMessages[index]);
+                } catch (InterruptedException e) {
+                    break;
                 }
-
-                int index = (int) (java.lang.Math.random() * funMessages.length);
-                funMessageLabel.setText(funMessages[index]);
             }
 
         }
+
     }
 
 }

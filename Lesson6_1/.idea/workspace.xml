@@ -81,17 +81,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/java1/lesson6_1/gui/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+            <state relative-caret-position="-1173">
+              <caret line="21" column="60" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1294#1295#0" expanded="true" />
                 <element signature="e#1332#1333#0" expanded="true" />
-                <element signature="e#5959#5960#0" expanded="true" />
-                <element signature="e#6011#6012#0" expanded="true" />
+                <element signature="e#1370#1371#0" expanded="true" />
+                <element signature="e#5998#5999#0" expanded="true" />
+                <element signature="e#6050#6051#0" expanded="true" />
+                <element signature="e#9809#9810#0" expanded="true" />
+                <element signature="e#9878#9879#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,13 +109,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Calculator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Calculator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/java1/lesson6_1/Calculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
+            <state relative-caret-position="221">
+              <caret line="49" column="68" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#375#376#0" expanded="true" />
+                <element signature="e#407#408#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,8 +146,8 @@
         <option value="$PROJECT_DIR$/src/exceptions/TooBigResultException.java" />
         <option value="$PROJECT_DIR$/src/ru/java1/lesson6_1/MathOperations.java" />
         <option value="$PROJECT_DIR$/src/ru/java1/lesson6_1/Math.java" />
-        <option value="$PROJECT_DIR$/src/ru/java1/lesson6_1/Calculator.java" />
         <option value="$PROJECT_DIR$/src/ru/java1/lesson6_1/gui/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/ru/java1/lesson6_1/Calculator.java" />
       </list>
     </option>
   </component>
@@ -621,26 +625,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java1/lesson6_1/Math.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="120" column="9" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/java1/lesson6_1/Calculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_73/src.zip!/java/awt/GridBagConstraints.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -661,14 +645,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/java1/lesson6_1/gui/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+        <state relative-caret-position="-1173">
+          <caret line="21" column="60" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1294#1295#0" expanded="true" />
             <element signature="e#1332#1333#0" expanded="true" />
-            <element signature="e#5959#5960#0" expanded="true" />
-            <element signature="e#6011#6012#0" expanded="true" />
+            <element signature="e#1370#1371#0" expanded="true" />
+            <element signature="e#5998#5999#0" expanded="true" />
+            <element signature="e#6050#6051#0" expanded="true" />
+            <element signature="e#9809#9810#0" expanded="true" />
+            <element signature="e#9878#9879#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java1/lesson6_1/Math.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="120" column="9" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/java1/lesson6_1/Calculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="49" column="68" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+            <element signature="e#407#408#0" expanded="true" />
           </folding>
         </state>
       </provider>

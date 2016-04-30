@@ -2,6 +2,7 @@ package ru.java1.lesson6_1.gui;
 
 import exceptions.IncorrectInputDataException;
 import exceptions.TooBigResultException;
+import ru.java1.lesson6_1.Calculator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +19,7 @@ public class MainWindow {
 
     //создаем компоненты
     private JFrame mainWindow = new JFrame("Калькулятор");
-    private Dimension dimMainWondow = new Dimension(370, 240);
+    private Dimension dimMainWondow = new Dimension(370, 255);
 
     //метка с сообщением о том, что здесь происходит
     private JLabel titleLabel = new JLabel("Введите два неотрицательных числа");
@@ -99,14 +100,15 @@ public class MainWindow {
 
 
         //3 ряд. Ставим метки с описанием и поля ввода операндов
-        mainWindow.add(operandFirstLabel, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        mainWindow.add(operandFirstLabel, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-        mainWindow.add(operandFirstTextField, new GridBagConstraints(2, 2, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+        mainWindow.add(operandFirstTextField, new GridBagConstraints(2, 2, 2, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 
         //4 ряд. Второй ряд метки с описанием и полем ввода второго операнда
-        mainWindow.add(operandSecondLabel, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        mainWindow.add(operandSecondLabel, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-        mainWindow.add(operandSecondTextField, new GridBagConstraints(2, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+        mainWindow.add(operandSecondTextField, new GridBagConstraints(2, 3, 2, 1, 1.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 
         //5 ряд. Скрытое сообщение, где будут сообщаться об ошибках и результате
@@ -229,6 +231,13 @@ public class MainWindow {
             }
         });
 
+        //обработка нажатия на кнопку "отключить сообщения"
+        offFunMessagesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Calculator.getFunThread().interrupt();
+            }
+        });
 
     }
 
