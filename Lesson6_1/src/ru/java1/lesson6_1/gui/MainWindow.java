@@ -14,9 +14,14 @@ import java.awt.event.ActionListener;
  */
 public class MainWindow {
 
+    private static MainWindow instance;
+
     //создаем компоненты
     private JFrame mainWindow = new JFrame("Калькулятор");
-    private Dimension dimMainWondow = new Dimension(350, 230);
+    private Dimension dimMainWondow = new Dimension(370, 240);
+
+    //метка с сообщением о том, что здесь происходит
+    private JLabel titleLabel = new JLabel("Введите два неотрицательных числа");
 
     //метки с полями ввода операндов
     private JLabel operandFirstLabel = new JLabel("Введите первое число:");
@@ -28,6 +33,14 @@ public class MainWindow {
     //метка для сообщения об ошибках
     private JLabel mesOfErrorsLabel = new JLabel();
 
+    //метка для сообщений и кнопка отключения
+    private JLabel funMessageLabel = new JLabel("Размышляете над операцией?");
+    private JButton offFunMessagesButton = new JButton("Отключить сообщения");
+
+    public JLabel getFunMessageLabel() {
+        return funMessageLabel;
+    }
+
     //кнопки вычисления
     private JButton plusButton = new JButton("+");
     private JButton subtractButton = new JButton("-");
@@ -36,6 +49,20 @@ public class MainWindow {
 
     //кнопка выхода
     private JButton closeButton = new JButton("Закрыть");
+
+    //а вто здесь эта штуковина нужна
+    private MainWindow() {
+
+    }
+
+    public static MainWindow getInstance() {
+        if (instance == null) {
+            synchronized (MainWindow.class) {
+                if (instance == null) instance = new MainWindow();
+            }
+        }
+        return instance;
+    }
 
 
     //инициализация
@@ -53,37 +80,57 @@ public class MainWindow {
         mesOfErrorsLabel.setForeground(Color.RED);
         mesOfErrorsLabel.setHorizontalAlignment(0);
 
+        //установка настроек метки с приветствием
+        titleLabel.setHorizontalAlignment(0);
+
+        //установка настроек метки с funMessage
+        funMessageLabel.setHorizontalAlignment(0);
+        funMessageLabel.setFont(new Font(null, Font.ITALIC, 13));
+
         //расставляем компоненты
 
-        //1 ряд
-        //ставим метки с описанием и поля ввода операндов
-        mainWindow.add(operandFirstLabel, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
-                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-        mainWindow.add(operandFirstTextField, new GridBagConstraints(2, 0, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //1 ряд. Метка с приветствием
+        mainWindow.add(titleLabel, new GridBagConstraints(0, 0, 4, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 
-        //2 ряд
-        mainWindow.add(operandSecondLabel, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
-                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-        mainWindow.add(operandSecondTextField, new GridBagConstraints(2, 1, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //2 ряд. Метка с funMessage
+        mainWindow.add(funMessageLabel, new GridBagConstraints(0, 1, 4, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 
-        //3 ряд. Скрытое сообщение, где будут сообщаться об ошибках и результате
-        mainWindow.add(mesOfErrorsLabel, new GridBagConstraints(0, 2, 4, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+
+        //3 ряд. Ставим метки с описанием и поля ввода операндов
+        mainWindow.add(operandFirstLabel, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+        mainWindow.add(operandFirstTextField, new GridBagConstraints(2, 2, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+
+        //4 ряд. Второй ряд метки с описанием и полем ввода второго операнда
+        mainWindow.add(operandSecondLabel, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+        mainWindow.add(operandSecondTextField, new GridBagConstraints(2, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 
-        //4 ряд. Кнопки с изображенями математических операторов
-        mainWindow.add(plusButton, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
-                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-        mainWindow.add(subtractButton, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
-                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-        mainWindow.add(multButton, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
-                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-        mainWindow.add(divButton, new GridBagConstraints(3, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //5 ряд. Скрытое сообщение, где будут сообщаться об ошибках и результате
+        mainWindow.add(mesOfErrorsLabel, new GridBagConstraints(0, 4, 4, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 
-        //4 ряд. Кнопка "Закрыть"
-        mainWindow.add(closeButton, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
+        //6 ряд. Кнопки с изображенями математических операторов
+        mainWindow.add(plusButton, new GridBagConstraints(0, 5, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+        mainWindow.add(subtractButton, new GridBagConstraints(1, 5, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+        mainWindow.add(multButton, new GridBagConstraints(2, 5, 1, 1, 0.0, 1.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+        mainWindow.add(divButton, new GridBagConstraints(3, 5, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 1, 1));
+
+
+
+        //7 ряд. Кнопка отключения funMessage
+        mainWindow.add(offFunMessagesButton, new GridBagConstraints(0, 6, 2, 1, 1.0, 0.0, GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+
+        //Кнопка "Закрыть"
+        mainWindow.add(closeButton, new GridBagConstraints(2, 6, 2, 1, 1.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 
 
