@@ -1,7 +1,7 @@
 package ru.java1.lesson6_1;
 
-import exceptions.IncorrectInputDataException;
-import exceptions.TooBigResultException;
+import ru.java1.lesson6_1.exceptions.IncorrectInputDataException;
+import ru.java1.lesson6_1.exceptions.TooBigResultException;
 
 /**
  * Created by Abilis on 30.04.2016.

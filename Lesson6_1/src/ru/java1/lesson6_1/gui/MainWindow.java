@@ -1,7 +1,7 @@
 package ru.java1.lesson6_1.gui;
 
-import exceptions.IncorrectInputDataException;
-import exceptions.TooBigResultException;
+import ru.java1.lesson6_1.exceptions.IncorrectInputDataException;
+import ru.java1.lesson6_1.exceptions.TooBigResultException;
 import ru.java1.lesson6_1.Calculator;
 
 import javax.swing.*;
@@ -19,7 +19,7 @@ public class MainWindow {
 
     //создаем компоненты
     private JFrame mainWindow = new JFrame("Калькулятор");
-    private Dimension dimMainWondow = new Dimension(370, 255);
+    private Dimension dimMainWondow = new Dimension(370, 270);
 
     //метка с сообщением о том, что здесь происходит
     private JLabel titleLabel = new JLabel("Введите два неотрицательных числа");
