@@ -1,7 +1,13 @@
 package ru.java1.lesson6_1.gui;
 
+import exceptions.IncorrectInputDataException;
+import exceptions.TooBigResultException;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 /**
  * Created by Abilis on 30.04.2016.
@@ -10,7 +16,7 @@ public class MainWindow {
 
     //создаем компоненты
     private JFrame mainWindow = new JFrame("Калькулятор");
-    private Dimension dimMainWondow = new Dimension(300, 230);
+    private Dimension dimMainWondow = new Dimension(350, 230);
 
     //метки с полями ввода операндов
     private JLabel operandFirstLabel = new JLabel("Введите первое число:");
@@ -45,6 +51,7 @@ public class MainWindow {
 
         //установка настроек скрытого поля с сообщенями об ошибках
         mesOfErrorsLabel.setForeground(Color.RED);
+        mesOfErrorsLabel.setHorizontalAlignment(0);
 
         //расставляем компоненты
 
@@ -61,7 +68,7 @@ public class MainWindow {
         mainWindow.add(operandSecondTextField, new GridBagConstraints(2, 1, 2, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 
-        //3 ряд. Скрытое сообщение, где будут сообщаться об ошибках
+        //3 ряд. Скрытое сообщение, где будут сообщаться об ошибках и результате
         mainWindow.add(mesOfErrorsLabel, new GridBagConstraints(0, 2, 4, 1, 0.0, 0.0, GridBagConstraints.NORTH,
                 GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 
@@ -85,6 +92,96 @@ public class MainWindow {
 
 
         //обработчики
+
+        //обработка нажатия на кнопку "Закрыть"
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainWindow.dispose();
+            }
+        });
+
+        //Обработка нажатия на кнопку "+"
+        plusButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ru.java1.lesson6_1.Math math = ru.java1.lesson6_1.Math.getInstance();
+                double result = 0;
+
+                try {
+                    result = math.getSum(operandFirstTextField.getText(), operandSecondTextField.getText());
+                    mesOfErrorsLabel.setText(operandFirstTextField.getText() + " + " +
+                    operandSecondTextField.getText() + " = " + result);
+
+                } catch (TooBigResultException e1) {
+                    mesOfErrorsLabel.setText(e1.getMessage());
+
+                } catch (IncorrectInputDataException e2) {
+                    mesOfErrorsLabel.setText(e2.getMessage());
+                }
+            }
+        });
+
+        //Обработка нажатия на кнопку "-"
+        subtractButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ru.java1.lesson6_1.Math math = ru.java1.lesson6_1.Math.getInstance();
+                double result = 0;
+
+                try {
+                    result = math.getSub(operandFirstTextField.getText(), operandSecondTextField.getText());
+                    mesOfErrorsLabel.setText(operandFirstTextField.getText() + " - " +
+                            operandSecondTextField.getText() + " = " + result);
+                } catch (TooBigResultException e1) {
+                    mesOfErrorsLabel.setText(e1.getMessage());
+
+                } catch (IncorrectInputDataException e2) {
+                    mesOfErrorsLabel.setText(e2.getMessage());
+                }
+            }
+        });
+
+        //Обработка нажатия на кнопку "*"
+        multButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ru.java1.lesson6_1.Math math = ru.java1.lesson6_1.Math.getInstance();
+                double result = 0;
+
+                try {
+                    result = math.getMult(operandFirstTextField.getText(), operandSecondTextField.getText());
+                    mesOfErrorsLabel.setText(operandFirstTextField.getText() + " * " +
+                            operandSecondTextField.getText() + " = " + result);
+                } catch (TooBigResultException e1) {
+                    mesOfErrorsLabel.setText(e1.getMessage());
+
+                } catch (IncorrectInputDataException e2) {
+                    mesOfErrorsLabel.setText(e2.getMessage());
+                }
+            }
+        });
+
+        //Обработка нажатия на кнопку "/"
+        divButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ru.java1.lesson6_1.Math math = ru.java1.lesson6_1.Math.getInstance();
+                double result = 0;
+
+                try {
+                    result = math.getDiv(operandFirstTextField.getText(), operandSecondTextField.getText());
+                    mesOfErrorsLabel.setText(operandFirstTextField.getText() + " / " +
+                            operandSecondTextField.getText() + " = " + result);
+                } catch (TooBigResultException e1) {
+                    mesOfErrorsLabel.setText(e1.getMessage());
+
+                } catch (IncorrectInputDataException e2) {
+                    mesOfErrorsLabel.setText(e2.getMessage());
+                }
+            }
+        });
+
 
     }
 

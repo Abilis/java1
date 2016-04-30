@@ -14,6 +14,7 @@ public class Math implements MathOperations {
 
     }
 
+    //хз, зачем здесь потокобезопасный синглтон, но пусть будет
     public static Math getInstance() {
         if (instance == null) {
             synchronized (Math.class) {
@@ -35,6 +36,10 @@ public class Math implements MathOperations {
 
         } catch (NumberFormatException e) {
             throw new IncorrectInputDataException("Введенные данные не являются числами");
+        }
+
+        if (num1 < 0 || num2 < 0) {
+            throw new IncorrectInputDataException("Допустимы только неотрицательные числа!");
         }
 
          double result = num1 + num2;
@@ -59,6 +64,10 @@ public class Math implements MathOperations {
             throw new IncorrectInputDataException("Введенные данные не являются числами");
         }
 
+        if (num1 < 0 || num2 < 0) {
+            throw new IncorrectInputDataException("Допустимы только неотрицательные числа!");
+        }
+
         double result = num1 - num2;
 
         if (result > 10_000) {
@@ -81,6 +90,10 @@ public class Math implements MathOperations {
             throw new IncorrectInputDataException("Введенные данные не являются числами");
         }
 
+        if (num1 < 0 || num2 < 0) {
+            throw new IncorrectInputDataException("Допустимы только неотрицательные числа!");
+        }
+
         double result = num1 * num2;
 
         if (result > 10_000) {
@@ -101,6 +114,10 @@ public class Math implements MathOperations {
 
         } catch (NumberFormatException e) {
             throw new IncorrectInputDataException("Введенные данные не являются числами");
+        }
+
+        if (num1 < 0 || num2 < 0) {
+            throw new IncorrectInputDataException("Допустимы только неотрицательные числа!");
         }
 
         if (num2 == 0) {
