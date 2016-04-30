@@ -51,7 +51,7 @@ public class MainWindow {
     //кнопка выхода
     private JButton closeButton = new JButton("Закрыть");
 
-    //а вто здесь эта штуковина нужна
+    //а вто здесь эта штуковина нужна. Хотя и без нее можно обойтись
     private MainWindow() {
 
     }

@@ -35,11 +35,9 @@ public class Calculator {
 
         @Override
         public void run() {
-            try {
-                funMessageLabel = mainWindowFrame.getFunMessageLabel();
-            } catch (NullPointerException Ignored) {
 
-            }
+            funMessageLabel = mainWindowFrame.getFunMessageLabel();
+
             funMessages = new String[10];
             funMessages[0] = "А сколько будет 2 + 2 * 2?";
             funMessages[1] = "Этот калькулятор - демо-версия виндовского";
